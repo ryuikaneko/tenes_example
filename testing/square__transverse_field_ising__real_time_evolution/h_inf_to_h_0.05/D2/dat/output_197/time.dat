@@ -1,0 +1,5 @@
+time all           = 0.573263
+time simple update = 0.0215269
+time full update   = 0
+time environmnent  = 0.251179
+time observable    = 0.107507
