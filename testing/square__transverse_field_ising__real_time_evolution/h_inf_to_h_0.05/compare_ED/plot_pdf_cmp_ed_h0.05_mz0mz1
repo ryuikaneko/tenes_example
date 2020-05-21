@@ -1,0 +1,45 @@
+set style line  1 lt 1 pt 4  lc rgbcolor "#ff0200"
+set style line  2 lt 1 pt 6  lc rgbcolor "#d67519"
+set style line  3 lt 1 pt 8  lc rgbcolor "#267e17"
+set style line  4 lt 1 pt 10 lc rgbcolor "#0021d2"
+set style line  5 lt 1 pt 12 lc rgbcolor "#8b2bd3"
+set style line  6 lt 1 pt 14 lc rgbcolor "#2b3230"
+set style line  7 lt 1 pt 2  lc rgbcolor "#000000"
+set style line 11 lt 1 pt 4  lc rgbcolor "#000000"
+
+do for [i=1:20] {
+  set style line i linewidth 2 ps 0.5
+}
+
+set term pdf
+set output "fig_cmp_ed_TFI_sudden_quench_h_inf_to_0.05__mz0mz1.pdf"
+
+set label 1 "h={/Symbol \245} --> 0.05" at graph -0.10,1.07
+
+set xlabel "time {/Symbol\264} J/{/Symbol p}"
+set ylabel "m_z(0)m_z(1)"
+set grid
+
+set key out
+set key horizontal maxcols 6
+set key samplen 0
+set key width 3
+
+set xrange [0:]
+set yrange [0:0.0125]
+
+dt=0.05
+scale=pi
+
+p \
+"< awk '$1==\"SzSz\"{print $3}' \
+../D2/dat/output_?/density.dat \
+../D2/dat/output_??/density.dat \
+../D2/dat/output_???/density.dat \
+" u ($0*dt/pi):($1/2) w p ls 5 ti "PEPS,D2", \
+"< awk '$1==\"SzSz\"{print $3}' \
+../D4/dat/output_?/density.dat \
+../D4/dat/output_??/density.dat \
+../D4/dat/output_???/density.dat \
+" u ($0*dt/pi):($1/2) w p ls 6 ti "PEPS,D4", \
+"./ED/dat_gather/dat_L4" u 1:($3/4) w l ls 1 ti "ED,L4"

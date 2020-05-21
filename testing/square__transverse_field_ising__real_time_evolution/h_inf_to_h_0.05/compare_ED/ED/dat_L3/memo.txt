@@ -1,0 +1,1 @@
+python quench_dynamics_2d_FM_TFIsing.py -Lx 3 -Ly 3 -hi 0.1 -hf 0.1 > dat

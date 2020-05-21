@@ -1,0 +1,12 @@
+p \
+"< awk '$1==\"hamiltonian\"{print $3}' \
+../D2/dat/output_?/density.dat \
+../D2/dat/output_??/density.dat \
+../D2/dat/output_???/density.dat \
+" u 0:1 ti "D2", \
+"< awk '$1==\"hamiltonian\"{print $3}' \
+../D4/dat/output_?/density.dat \
+../D4/dat/output_??/density.dat \
+../D4/dat/output_???/density.dat \
+" u 0:1 ti "D4"
+pause -1

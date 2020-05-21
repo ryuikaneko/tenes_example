@@ -1,0 +1,8 @@
+p "dat_tutorial_read_py" u 1:2
+pause -1
+
+p "dat_tutorial_read_py" u 1:(abs($3))
+pause -1
+
+p "dat_tutorial_read_py" u 1:4
+pause -1
